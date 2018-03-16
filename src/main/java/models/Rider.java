@@ -1,8 +1,12 @@
 package models;
 
-public class Rider {
+import javax.persistence.*;
 
-    private String nationality;
+@Entity
+@Table(name = "riders")
+public class Rider extends TeamMember{
+
+    private CountryType nationality;
     private int raceNumber;
     private int championshipPoints;
     private Manager manager;
@@ -10,21 +14,24 @@ public class Rider {
     public Rider() {
     }
 
-    public Rider(String nationality, int raceNumber, int championshipPoints, Manager manager) {
+    public Rider(String firstName, String lastName, CountryType nationality, int raceNumber, int championshipPoints, Manager manager) {
+        super(firstName, lastName);
         this.nationality = nationality;
         this.raceNumber = raceNumber;
         this.championshipPoints = championshipPoints;
         this.manager = manager;
     }
 
-    public String getNationality() {
+    @Column(name = "nationality")
+    public CountryType getNationality() {
         return nationality;
     }
 
-    public void setNationality(String nationality) {
+    public void setNationality(CountryType nationality) {
         this.nationality = nationality;
     }
 
+    @Column(name = "race_number")
     public int getRaceNumber() {
         return raceNumber;
     }
@@ -33,6 +40,7 @@ public class Rider {
         this.raceNumber = raceNumber;
     }
 
+    @Column(name = "championship_points")
     public int getChampionshipPoints() {
         return championshipPoints;
     }
@@ -41,6 +49,7 @@ public class Rider {
         this.championshipPoints = championshipPoints;
     }
 
+    @OneToOne(fetch = FetchType.EAGER)
     public Manager getManager() {
         return manager;
     }

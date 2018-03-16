@@ -17,7 +17,7 @@
         <!--<mapping class="models.Manufacturer"/>-->
         <!--<mapping class="models.TeamMember"/>-->
         <mapping class="models.Manager"/>
-        <!--<mapping class="models.Rider"/>-->
+        <mapping class="models.Rider"/>
         <mapping class="models.Team"/>
     </session-factory>
 </hibernate-configuration>

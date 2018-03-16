@@ -9,7 +9,7 @@ public class Team {
 
     private int id;
     private String name;
-//    private Set<TeamMember> teamMembers;
+    private Manager manager;
 
     public Team() {
     }
@@ -38,13 +38,12 @@ public class Team {
         this.name = name;
     }
 
+    @OneToOne(fetch = FetchType.EAGER)
+    public Manager getManager() {
+        return manager;
+    }
 
-//    @OneToMany(mappedBy = "team")
-//    public Set<TeamMember> getTeamMembers() {
-//        return teamMembers;
-//    }
-//
-//    public void setTeamMembers(Set<TeamMember> teamMembers) {
-//        this.teamMembers = teamMembers;
-//    }
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
 }
