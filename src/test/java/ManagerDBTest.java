@@ -16,7 +16,7 @@ public class ManagerDBTest {
     public void setUp() {
         manufacturer = new Manufacturer(ManufacturerType.YAMAHA, CountryType.JAPAN);
         DBHelper.saveOrUpdate(manufacturer);
-        team = new Team("Yamaha", manufacturer);
+        team = new Team("Movistar Yamaha", manufacturer);
         DBHelper.saveOrUpdate(team);
         manager = new Manager("Lin", "Jarvis", team);
         DBHelper.saveOrUpdate(manager);
