@@ -1,7 +1,6 @@
 package db;
 
-import models.CountryType;
-import models.Race;
+import models.*;
 
 import javax.crypto.spec.DHGenParameterSpec;
 
@@ -28,6 +27,36 @@ public class Seed {
         Race race17 = new Race("Australian Motorcycle Grand Prix", "Phillip Island", CountryType.AUSTRALIA, "2018-10-28");
         Race race18 = new Race("Buriram International Circuit", "Sepang International Circuit", CountryType.MALAYSIA, "2018-11-04");
         Race race19 = new Race("Gran Premio Motul de la Comunitat Valenciana", "Circuit Ricardo Tormo", CountryType.SPAIN, "2018-11-18");
+
+        Manufacturer manufacturer1 = new Manufacturer(ManufacturerType.YAMAHA, CountryType.JAPAN);
+        DBHelper.save(manufacturer1);
+        Manufacturer manufacturer2 = new Manufacturer(ManufacturerType.HONDA, CountryType.JAPAN);
+        DBHelper.save(manufacturer2);
+        Manufacturer manufacturer3 = new Manufacturer(ManufacturerType.SUZUKI, CountryType.JAPAN);
+        DBHelper.save(manufacturer3)
+        Manufacturer manufacturer4 = new Manufacturer(ManufacturerType.DUCATI, CountryType.ITALY);
+        DBHelper.save(manufacturer4);
+        Manufacturer manufacturer5 = new Manufacturer(ManufacturerType.APRILIA, CountryType.ITALY);
+        DBHelper.save(manufacturer5);
+        Manufacturer manufacturer6 = new Manufacturer(ManufacturerType.KTM, CountryType.AUSTRIA);
+        DBHelper.save(manufacturer6);
+
+
+
+        Team team1 = new Team("Movistar Yamaha", manufacturer1);
+        DBHelper.save(team1);
+        Team team2 = new Team("Tech 3", manufacturer1);
+        DBHelper.save(team2);
+        Team team3 = new Team("Ducati Corse", manufacturer4);
+        DBHelper.save(team3);
+
+
+        Manager manager1 = new Manager("Lin", "Jarvis", team1);
+        DBHelper.save(manager1);
+
+
+        Rider rider1 = new Rider("Valentino", "Rossi", CountryType.ITALY, 46, 0, manager1);
+        DBHelper.save(rider1);
 
     }
 }
