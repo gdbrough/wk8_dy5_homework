@@ -39,6 +39,6 @@ public class ManagerDBTest {
         manager.setFirstName("Brian");
         DBHelper.saveOrUpdate(manager);
         Manager editedManager = DBHelper.find(Manager.class, manager.getId());
-        assertEquals("Brian", editedManager.getFirstName());
+        assertEquals("Brian Jarvis", editedManager.displayName());
     }
 }
