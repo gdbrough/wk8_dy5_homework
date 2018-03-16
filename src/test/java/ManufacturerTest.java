@@ -2,34 +2,29 @@ import db.DBHelper;
 import models.CountryType;
 import models.Manufacturer;
 import models.ManufacturerType;
-import models.Team;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.Assert.assertEquals;
 
-public class TeamDBTest {
+public class ManufacturerTest {
 
-    private Team team;
     private Manufacturer manufacturer;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         manufacturer = new Manufacturer(ManufacturerType.YAMAHA, CountryType.JAPAN);
         DBHelper.saveOrUpdate(manufacturer);
-        team = new Team("Yamaha", manufacturer);
-        DBHelper.saveOrUpdate(team);
     }
 
     @After
-    public void tearDown() {
-        DBHelper.delete(team);
+    public void tearDown() throws Exception {
         DBHelper.delete(manufacturer);
     }
 
     @Test
-    public void testCanSaveTeam() {
-        assertEquals(1, DBHelper.getAll(Team.class).size());
+    public void testCanSaveManufacturer() {
+        assertEquals(1, DBHelper.getAll(Manufacturer.class).size());
     }
 }

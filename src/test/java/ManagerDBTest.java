@@ -1,6 +1,5 @@
 import db.DBHelper;
-import models.Manager;
-import models.Team;
+import models.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +10,13 @@ public class ManagerDBTest {
 
     private Manager manager;
     private Team team;
+    private Manufacturer manufacturer;
 
     @Before
     public void setUp() {
-        team = new Team("Yamaha");
+        manufacturer = new Manufacturer(ManufacturerType.YAMAHA, CountryType.JAPAN);
+        DBHelper.saveOrUpdate(manufacturer);
+        team = new Team("Yamaha", manufacturer);
         DBHelper.saveOrUpdate(team);
         manager = new Manager("Lin", "Jarvis", team);
         DBHelper.saveOrUpdate(manager);
@@ -24,6 +26,7 @@ public class ManagerDBTest {
     public void tearDown() {
         DBHelper.delete(manager);
         DBHelper.delete(team);
+        DBHelper.delete(manufacturer);
     }
 
     @Test

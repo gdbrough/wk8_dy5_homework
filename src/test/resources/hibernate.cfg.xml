@@ -14,7 +14,7 @@
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="show_sql">true</property>
         <!--<mapping class="models.Race"/>-->
-        <!--<mapping class="models.Manufacturer"/>-->
+        <mapping class="models.Manufacturer"/>
         <!--<mapping class="models.TeamMember"/>-->
         <mapping class="models.Manager"/>
         <mapping class="models.Rider"/>

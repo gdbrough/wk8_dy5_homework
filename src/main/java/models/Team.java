@@ -12,12 +12,14 @@ public class Team {
     private int id;
     private String name;
     private Manager manager;
+    private Manufacturer manufacturer;
 
     public Team() {
     }
 
-    public Team(String name) {
+    public Team(String name, Manufacturer manufacturer) {
         this.name = name;
+        this.manufacturer = manufacturer;
     }
 
     @Id
@@ -51,5 +53,15 @@ public class Team {
 
     public void assignManager(Manager manager) {
         setManager(manager);
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "manufacturer_id", nullable = false)
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

@@ -1,6 +1,5 @@
 import db.DBHelper;
-import models.Manager;
-import models.Team;
+import models.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,13 +10,23 @@ public class TeamTest {
 
     private Team team;
     private Manager manager;
+    private Manufacturer manufacturer;
 
     @Before
-    public void setUp()  {
-        team = new Team("Yamaha");
+    public void setUp() {
+        manufacturer = new Manufacturer(ManufacturerType.YAMAHA, CountryType.JAPAN);
+        DBHelper.saveOrUpdate(manufacturer);
+        team = new Team("Yamaha", manufacturer);
         DBHelper.saveOrUpdate(team);
         manager = new Manager("Lin", "Jarvis", team);
         DBHelper.saveOrUpdate(manager);
+    }
+
+    @After
+    public void tearDown() {
+        DBHelper.delete(manager);
+        DBHelper.delete(team);
+        DBHelper.delete(manufacturer);
     }
 
     @Test
@@ -25,6 +34,6 @@ public class TeamTest {
         team.assignManager(manager);
         DBHelper.saveOrUpdate(team);
         Team editedTeam = DBHelper.find(Team.class, team.getId());
-        assertEquals(1, editedTeam.getManager().getId());
+        assertEquals(manager.getId(), editedTeam.getManager().getId());
     }
 }

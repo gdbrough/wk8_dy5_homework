@@ -1,8 +1,5 @@
 import db.DBHelper;
-import models.CountryType;
-import models.Manager;
-import models.Rider;
-import models.Team;
+import models.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +11,13 @@ public class RiderDBTest {
     private Rider rider;
     private Team team;
     private Manager manager;
-    private CountryType nationality;
+    private Manufacturer manufacturer;
 
     @Before
     public void setUp() {
-        team = new Team("Yamaha");
+        manufacturer = new Manufacturer(ManufacturerType.YAMAHA, CountryType.JAPAN);
+        DBHelper.saveOrUpdate(manufacturer);
+        team = new Team("Yamaha", manufacturer);
         DBHelper.saveOrUpdate(team);
         manager = new Manager("Lin", "Jarvis", team);
         DBHelper.saveOrUpdate(manager);
@@ -31,6 +30,7 @@ public class RiderDBTest {
         DBHelper.delete(rider);
         DBHelper.delete(manager);
         DBHelper.delete(team);
+        DBHelper.delete(manufacturer);
     }
 
     @Test
