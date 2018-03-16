@@ -1,5 +1,7 @@
 package models;
 
+import db.DBHelper;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -45,5 +47,9 @@ public class Team {
 
     public void setManager(Manager manager) {
         this.manager = manager;
+    }
+
+    public void assignManager(Manager manager) {
+        setManager(manager);
     }
 }

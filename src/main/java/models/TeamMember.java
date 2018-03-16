@@ -46,4 +46,9 @@ public abstract class TeamMember {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String displayName(){
+        return getFirstName() + " " + getLastName();
+    }
+
 }
