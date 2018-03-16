@@ -81,8 +81,12 @@ public class Race {
             int currentPoints = rider.getChampionshipPoints();
             int pointsForRace = PositionType.values()[index].getPointsForPosition();
             rider.setChampionshipPoints(currentPoints + pointsForRace);
-            DBHelper.saveOrUpdate(rider);
-            index++;
+            DBHelper.update(rider);
+            if (index < 14) {
+                index++;
+            } else {
+                break;
+            }
         }
     }
 

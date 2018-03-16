@@ -22,7 +22,7 @@ public class RaceTest {
     @Test
     public void testCanGetPointsForPosition() {
         assertEquals(11, race.getPointsForPosition(PositionType.FIFTH));
-        assertEquals(20, race.getPointsForPosition(PositionType.values()[1]));
+        assertEquals(1, race.getPointsForPosition(PositionType.values()[14]));
         assertEquals(25, race.getPointsForPosition(PositionType.FIRST));
     }
 
@@ -35,11 +35,11 @@ public class RaceTest {
     @Test
     public void testCanAddPointsAfterRace() {
         rider = new Rider("Valentino", "Rossi", CountryType.ITALY, 46, 50, null);
-        DBHelper.saveOrUpdate(rider);
+        DBHelper.save(rider);
         Rider rider2 = new Rider("Andrea", "Ianone", CountryType.ITALY, 29, 20, null);
-        DBHelper.saveOrUpdate(rider2);
+        DBHelper.save(rider2);
         Rider rider3 = new Rider("Dani", "Pedrosa", CountryType.SPAIN, 26, 0, null);
-        DBHelper.saveOrUpdate(rider3);
+        DBHelper.save(rider3);
         race.runRace();
         assertEquals(1, 1);
     }

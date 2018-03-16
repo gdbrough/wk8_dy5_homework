@@ -16,5 +16,6 @@ public enum CountryType {
     ARGENTINA,
     USA,
     NETHERLANDS,
-    AUSTRIA;
+    AUSTRIA,
+    GERMANY;
 }
