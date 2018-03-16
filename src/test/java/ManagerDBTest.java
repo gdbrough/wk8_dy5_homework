@@ -33,4 +33,12 @@ public class ManagerDBTest {
     public void testCanSaveManager() {
         assertEquals(1, DBHelper.getAll(Manager.class).size());
     }
+
+    @Test
+    public void testCanUpdateManager() {
+        manager.setFirstName("Brian");
+        DBHelper.saveOrUpdate(manager);
+        Manager editedManager = DBHelper.find(Manager.class, manager.getId());
+        assertEquals("Brian", editedManager.getFirstName());
+    }
 }

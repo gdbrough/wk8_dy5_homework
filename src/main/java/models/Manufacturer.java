@@ -9,7 +9,6 @@ public class Manufacturer {
     private int id;
     private ManufacturerType manufacturer;
     private CountryType country;
-//    private Team team;
 
     public Manufacturer() {
     }

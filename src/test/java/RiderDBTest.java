@@ -42,4 +42,12 @@ public class RiderDBTest {
     public void testCanGetRidersCountry(){
         assertEquals("ITALY", rider.getNationality().toString().toUpperCase());
     }
+
+    @Test
+    public void testCanUpdateRider() {
+        rider.setChampionshipPoints(40);
+        DBHelper.saveOrUpdate(rider);
+        Rider editedRider = DBHelper.find(Rider.class, rider.getId());
+        assertEquals(40, editedRider.getChampionshipPoints());
+    }
 }

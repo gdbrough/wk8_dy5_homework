@@ -32,4 +32,12 @@ public class TeamDBTest {
     public void testCanSaveTeam() {
         assertEquals(1, DBHelper.getAll(Team.class).size());
     }
+
+    @Test
+    public void testCanUpdateTeam() {
+        team.setName("amahay");
+        DBHelper.saveOrUpdate(team);
+        Team editedTeam = DBHelper.find(Team.class, team.getId());
+        assertEquals("amahay", editedTeam.getName());
+    }
 }
