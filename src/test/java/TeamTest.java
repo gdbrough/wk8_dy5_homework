@@ -32,7 +32,7 @@ public class TeamTest {
     @Test
     public void testCanAssignManagerToTeam() {
         team.assignManager(manager);
-        DBHelper.saveOrUpdate(team);
+        DBHelper.update(team);
         Team editedTeam = DBHelper.find(Team.class, team.getId());
         assertEquals(manager.getId(), editedTeam.getManager().getId());
     }

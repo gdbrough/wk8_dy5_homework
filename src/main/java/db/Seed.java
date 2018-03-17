@@ -71,6 +71,53 @@ public class Seed {
 
         Manager manager1 = new Manager("Lin", "Jarvis", team1);
         DBHelper.save(manager1);
+        team1.assignManager(manager1);
+        DBHelper.update(team1);
+        Manager manager2 = new Manager("Hervé", "Poncharal", team2);
+        DBHelper.save(manager2);
+        team2.assignManager(manager2);
+        DBHelper.update(team2);
+        Manager manager3 = new Manager("Luigi", "dall'Igna", team3);
+        DBHelper.save(manager3);
+        team3.assignManager(manager3);
+        DBHelper.update(team3);
+        Manager manager4 = new Manager("Paolo", "Campinoti", team4);
+        DBHelper.save(manager4);
+        team4.assignManager(manager4);
+        DBHelper.update(team4);
+        Manager manager5 = new Manager("Gelete", "Nieto", team5);
+        DBHelper.save(manager5);
+        team5.assignManager(manager5);
+        DBHelper.update(team5);
+        Manager manager6 = new Manager("Fausto", "Gresini", team6);
+        DBHelper.save(manager6);
+        team6.assignManager(manager6);
+        DBHelper.update(team6);
+        Manager manager7 = new Manager("Marc", "van der Straten", team7);
+        DBHelper.save(manager7);
+        team7.assignManager(manager7);
+        DBHelper.update(team7);
+        Manager manager8 = new Manager("Lucio", "Cecchinello", team8);
+        DBHelper.save(manager8);
+        team8.assignManager(manager8);
+        DBHelper.update(team8);
+        Manager manager9 = new Manager("Raúl", "Romero", team9);
+        DBHelper.save(manager9);
+        team9.assignManager(manager9);
+        DBHelper.update(team9);
+        Manager manager10 = new Manager("Mike", "Leitner", team10);
+        DBHelper.save(manager10);
+        team10.assignManager(manager10);
+        DBHelper.update(team10);
+        Manager manager11 = new Manager("Alberto", "Puig", team11);
+        DBHelper.save(manager11);
+        team11.assignManager(manager11);
+        DBHelper.update(team11);
+        Manager manager12 = new Manager("Davide", "Brivio", team12);
+        DBHelper.save(manager12);
+        team12.assignManager(manager12);
+        DBHelper.update(team12);
+
 
 
         Rider rider1 = new Rider("Valentino", "Rossi", CountryType.ITALY, 46, 0, manager1);
