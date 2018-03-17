@@ -2,9 +2,12 @@ package models;
 
 import db.DBHelper;
 
+import javax.persistence.*;
 import java.util.Collections;
 import java.util.List;
 
+@Entity
+@Table(name = "races")
 public class Race {
 
     private Rider rider;
@@ -12,10 +15,14 @@ public class Race {
     private Manager manager;
     private Manufacturer manufacturer;
 
+    private int id;
     private String name;
     private String track;
     private CountryType country;
     private String date;
+
+    public Race() {
+    }
 
     public Race(String name, String track, CountryType country, String date) {
         this.name = name;
@@ -24,6 +31,18 @@ public class Race {
         this.date = date;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -32,6 +51,7 @@ public class Race {
         this.name = name;
     }
 
+    @Column(name = "track")
     public String getTrack() {
         return track;
     }
@@ -40,6 +60,7 @@ public class Race {
         this.track = track;
     }
 
+    @Column(name = "country")
     public CountryType getCountry() {
         return country;
     }
@@ -48,6 +69,7 @@ public class Race {
         this.country = country;
     }
 
+    @Column(name = "date")
     public String getDate() {
         return date;
     }
@@ -56,33 +78,20 @@ public class Race {
         this.date = date;
     }
 
-//    public List<Rider> getCompetingRiders(){
-////    public String getRiders() {
-////        String riderList = "";
-//        List<Rider> riders = DBHelper.getAll(Rider.class);
-////        Collections.shuffle(riders);
-////        for (Rider rider : riders){
-////            riderList += (rider.displayName() + " ");
-////        }
-//        return riders;
-//    }
-
     public int getPointsForPosition(PositionType position){
         return position.getPointsForPosition();
     }
 
     public void runRace(){
         List<Rider> riders = DBHelper.getAll(Rider.class);
-//        List<Rider> riders = getCompetingRiders();
         Collections.shuffle(riders);
         int index = 0;
         for (Rider rider : riders){
-//        for (int index = 0; index < riders.size(); index++){
             int currentPoints = rider.getChampionshipPoints();
             int pointsForRace = PositionType.values()[index].getPointsForPosition();
             rider.setChampionshipPoints(currentPoints + pointsForRace);
             DBHelper.update(rider);
-            if (index < 14) {
+            if (pointsForRace > 1) {
                 index++;
             } else {
                 break;

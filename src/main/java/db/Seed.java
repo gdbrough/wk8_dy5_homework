@@ -33,7 +33,7 @@ public class Seed {
         Manufacturer manufacturer2 = new Manufacturer(ManufacturerType.HONDA, CountryType.JAPAN);
         DBHelper.save(manufacturer2);
         Manufacturer manufacturer3 = new Manufacturer(ManufacturerType.SUZUKI, CountryType.JAPAN);
-        DBHelper.save(manufacturer3)
+        DBHelper.save(manufacturer3);
         Manufacturer manufacturer4 = new Manufacturer(ManufacturerType.DUCATI, CountryType.ITALY);
         DBHelper.save(manufacturer4);
         Manufacturer manufacturer5 = new Manufacturer(ManufacturerType.APRILIA, CountryType.ITALY);
@@ -49,6 +49,24 @@ public class Seed {
         DBHelper.save(team2);
         Team team3 = new Team("Ducati Corse", manufacturer4);
         DBHelper.save(team3);
+        Team team4 = new Team("Alma Pramac Racing", manufacturer4);
+        DBHelper.save(team4);
+        Team team5 = new Team("Angel Nieto Team", manufacturer4);
+        DBHelper.save(team5);
+        Team team6 = new Team("Aprilia Racing Team Gresini", manufacturer5);
+        DBHelper.save(team6);
+        Team team7 = new Team("EG 0,0 Marc VDS", manufacturer2);
+        DBHelper.save(team7);
+        Team team8 = new Team("LCR Honda", manufacturer2);
+        DBHelper.save(team8);
+        Team team9 = new Team("Reale Avintia Racing", manufacturer4);
+        DBHelper.save(team9);
+        Team team10 = new Team("Red Bull KTM Factory Racing", manufacturer6);
+        DBHelper.save(team10);
+        Team team11 = new Team("Repsol Honda Team", manufacturer2);
+        DBHelper.save(team11);
+        Team team12 = new Team("Team SUZUKI ECSTAR", manufacturer3);
+        DBHelper.save(team12);
 
 
         Manager manager1 = new Manager("Lin", "Jarvis", team1);
