@@ -1,9 +1,12 @@
 package db;
 
+import models.Rider;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -119,5 +122,37 @@ public class DBHelper {
         Criteria criteria = session.createCriteria(classType);
         results = getList(criteria);
         return results;
+    }
+
+    public static <T> List<T> getRiderChampionship(){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> standings = null;
+        Criteria cr = session.createCriteria(Rider.class);
+        cr.addOrder(Order.desc("championshipPoints"));
+        standings = getList(cr);
+        return standings;
+
+
+
+
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<T> results = null;
+//        Criteria cr = session.createCriteria(classType);
+//        cr.addOrder(Order.asc("age"));
+//        results = getList(cr);
+//        return results;
+//
+//
+//
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        Double average = null;
+//        Criteria cr = session.createCriteria(Employee.class);
+//        cr.setProjection(Projections.avg("salary"));
+//        average = (Double) getUniqueResult(cr);
+//        return average;
+
+
+
+
     }
 }

@@ -2,8 +2,6 @@ package db;
 
 import models.*;
 
-import javax.crypto.spec.DHGenParameterSpec;
-
 public class Seed {
 
     public static void seedDB() {
