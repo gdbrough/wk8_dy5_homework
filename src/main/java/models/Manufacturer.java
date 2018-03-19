@@ -1,6 +1,9 @@
 package models;
 
+import db.DBHelper;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "manufacturers")
@@ -9,6 +12,7 @@ public class Manufacturer {
     private int id;
     private ManufacturerType manufacturer;
     private CountryType country;
+    private int championshipPoints;
 
     public Manufacturer() {
     }
@@ -16,6 +20,7 @@ public class Manufacturer {
     public Manufacturer(ManufacturerType manufacturer, CountryType country) {
         this.manufacturer = manufacturer;
         this.country = country;
+        this.championshipPoints = championshipPoints;
     }
 
     @Id
@@ -47,12 +52,20 @@ public class Manufacturer {
         this.country = country;
     }
 
-//    @OneToMany(mappedBy = "manufacturer")
-//    public Team getTeam() {
-//        return team;
-//    }
-//
-//    public void setTeam(Team team) {
-//        this.team = team;
+    @Column(name = "points")
+    public int getChampionshipPoints() {
+        return championshipPoints;
+    }
+
+    public void setChampionshipPoints(int championshipPoints) {
+        this.championshipPoints = championshipPoints;
+    }
+
+//    public void assignChampionshipPoints(){
+//        List<Manager> managers = DBHelper.findManagersByTeam(this.team)
+//        List<Rider> riders = DBHelper.findRidersByManager(this.manager);
+//        for (Rider rider : riders){
+//            this.championshipPoints += rider.getChampionshipPoints();
+//        }
 //    }
 }

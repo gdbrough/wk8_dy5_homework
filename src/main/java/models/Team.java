@@ -3,6 +3,7 @@ package models;
 import db.DBHelper;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,6 +14,7 @@ public class Team {
     private String name;
     private Manager manager;
     private Manufacturer manufacturer;
+    private int championShipPoints;
 
     public Team() {
     }
@@ -20,6 +22,7 @@ public class Team {
     public Team(String name, Manufacturer manufacturer) {
         this.name = name;
         this.manufacturer = manufacturer;
+        this.championShipPoints = 0;
     }
 
     @Id
@@ -55,6 +58,15 @@ public class Team {
         setManager(manager);
     }
 
+    @Column(name="points")
+    public int getChampionShipPoints() {
+        return championShipPoints;
+    }
+
+    public void setChampionShipPoints(int championShipPoints) {
+        this.championShipPoints = championShipPoints;
+    }
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manufacturer_id", nullable = false)
     public Manufacturer getManufacturer() {
@@ -64,4 +76,15 @@ public class Team {
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
+
+    public void assignTeamChampionshipPoints(){
+        List<Rider> riders = DBHelper.findRidersByManager(this.manager);
+        for (Rider rider : riders){
+            this.championShipPoints += rider.getChampionshipPoints();
+        }
+    }
+
+//    public void assignManufacturerChampionshipPoints(){
+//
+//    }
 }

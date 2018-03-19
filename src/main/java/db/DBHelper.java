@@ -1,6 +1,9 @@
 package db;
 
+import models.Manager;
+import models.Manufacturer;
 import models.Rider;
+import models.Team;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -124,16 +127,52 @@ public class DBHelper {
         return results;
     }
 
-    public static <T> List<T> getRiderChampionship(){
+    public static <T> List<T> getRiderChampionship() {
         session = HibernateUtil.getSessionFactory().openSession();
         List<T> standings = null;
         Criteria cr = session.createCriteria(Rider.class);
         cr.addOrder(Order.desc("championshipPoints"));
         standings = getList(cr);
         return standings;
+    }
+
+    public static List<Team> getTeamChampionship() {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Team> standings = null;
+        Criteria cr = session.createCriteria(Team.class);
+        cr.addOrder(Order.desc("championShipPoints"));
+        standings = getList(cr);
+        return standings;
+    }
+
+    public static List<Rider> findRidersByManager(Manager manager){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Rider> results = null;
+        Criteria cr = session.createCriteria(Rider.class);
+        cr.add(Restrictions.eq("manager", manager));
+        results = getList(cr);
+        return results;
+    }
+
+    public static List<Manager> findManufacturerByTeam(Team team){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Manager> results = null;
+        Criteria cr = session.createCriteria(Manufacturer.class);
+        cr.add(Restrictions.eq("team", team));
+        results = getList(cr);
+        return results;
+    }
 
 
 
+//    public static List<File> findFilesInFolder(Folder folder) {
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<File> results = null;
+//        Criteria cr = session.createCriteria(File.class);
+//        cr.add(Restrictions.eq("folder", folder));
+//        results = getList(cr);
+//        return results;
+//    }
 
 //        session = HibernateUtil.getSessionFactory().openSession();
 //        List<T> results = null;
@@ -154,5 +193,4 @@ public class DBHelper {
 
 
 
-    }
 }
