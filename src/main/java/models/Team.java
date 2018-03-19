@@ -83,8 +83,4 @@ public class Team {
             this.championShipPoints += rider.getChampionshipPoints();
         }
     }
-
-//    public void assignManufacturerChampionshipPoints(){
-//
-//    }
 }

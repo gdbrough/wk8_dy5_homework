@@ -12,7 +12,7 @@ public enum PositionType {
     NINTH(7),
     TENTH(6),
     ELEVENTH(5),
-    TWELTH(4),
+    TWELFTH(4),
     THIRTEENTH(3),
     FOURTEENTH(2),
     FIFTEENTH(1);

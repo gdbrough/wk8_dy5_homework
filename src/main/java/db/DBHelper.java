@@ -1,9 +1,6 @@
 package db;
 
-import models.Manager;
-import models.Manufacturer;
-import models.Rider;
-import models.Team;
+import models.*;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -145,6 +142,15 @@ public class DBHelper {
         return standings;
     }
 
+    public static List<ManufacturerType> getManufacturerChampionship() {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<ManufacturerType> standings = null;
+        Criteria cr = session.createCriteria(Team.class);
+        cr.addOrder(Order.desc("championshipPoints"));
+        standings = getList(cr);
+        return standings;
+    }
+
     public static List<Rider> findRidersByManager(Manager manager){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Rider> results = null;
@@ -154,14 +160,23 @@ public class DBHelper {
         return results;
     }
 
-    public static List<Manager> findManufacturerByTeam(Team team){
+    public static List<Team> findTeamsByManufacturer(String manufacturer){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Manager> results = null;
-        Criteria cr = session.createCriteria(Manufacturer.class);
-        cr.add(Restrictions.eq("team", team));
-        results = getList(cr);
-        return results;
+        List<Team> teams = null;
+        Criteria cr = session.createCriteria(Team.class);
+        cr.add(Restrictions.eq("manufacturer", manufacturer));
+        teams = getList(cr);
+        return teams;
     }
+
+//    public static List<Manager> findMangerByTeam(Team team){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Manager> results = null;
+//        Criteria cr = session.createCriteria(Manufacturer.class);
+//        cr.add(Restrictions.eq("team", team));
+//        results = getList(cr);
+//        return results;
+//    }
 
 
 

@@ -3,7 +3,10 @@ package models;
 import db.DBHelper;
 
 import javax.persistence.*;
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "manufacturers")
@@ -12,6 +15,7 @@ public class Manufacturer {
     private int id;
     private ManufacturerType manufacturer;
     private CountryType country;
+    private Set<Team> teams;
     private int championshipPoints;
 
     public Manufacturer() {
@@ -52,6 +56,15 @@ public class Manufacturer {
         this.country = country;
     }
 
+    @OneToMany(mappedBy = "manufacturer")
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> team) {
+        this.teams = team;
+    }
+
     @Column(name = "points")
     public int getChampionshipPoints() {
         return championshipPoints;
@@ -61,8 +74,31 @@ public class Manufacturer {
         this.championshipPoints = championshipPoints;
     }
 
+    public void assignManufacturerChampionshipPoints() {
+
+//        ManufacturerType name = ManufacturerType.values()[0];
+        List<Team> teams = DBHelper.findTeamsByManufacturer("2");
+        for (Team team : teams){
+            List<Rider> riders = DBHelper.findRidersByManager(team.getManager());
+            for (Rider rider : riders){
+                this.championshipPoints += rider.getChampionshipPoints();
+            }
+        }
+    }
+
+
+
+
+//    public void assignTeamChampionshipPoints(){
+//        List<Rider> riders = DBHelper.findRidersByManager(this.manager);
+//        for (Rider rider : riders){
+//            this.championShipPoints += rider.getChampionshipPoints();
+//        }
+//    }
+
+
 //    public void assignChampionshipPoints(){
-//        List<Manager> managers = DBHelper.findManagersByTeam(this.team)
+//        List<Manager> managers = DBHelper.findManagersByTeam()
 //        List<Rider> riders = DBHelper.findRidersByManager(this.manager);
 //        for (Rider rider : riders){
 //            this.championshipPoints += rider.getChampionshipPoints();
