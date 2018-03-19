@@ -142,9 +142,9 @@ public class DBHelper {
         return standings;
     }
 
-    public static List<ManufacturerType> getManufacturerChampionship() {
+    public static List<Manufacturer> getManufacturerChampionship() {
         session = HibernateUtil.getSessionFactory().openSession();
-        List<ManufacturerType> standings = null;
+        List<Manufacturer> standings = null;
         Criteria cr = session.createCriteria(Team.class);
         cr.addOrder(Order.desc("championshipPoints"));
         standings = getList(cr);
@@ -160,7 +160,7 @@ public class DBHelper {
         return results;
     }
 
-    public static List<Team> findTeamsByManufacturer(String manufacturer){
+    public static List<Team> findTeamsByManufacturer(Manufacturer manufacturer){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Team> teams = null;
         Criteria cr = session.createCriteria(Team.class);
@@ -168,44 +168,5 @@ public class DBHelper {
         teams = getList(cr);
         return teams;
     }
-
-//    public static List<Manager> findMangerByTeam(Team team){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<Manager> results = null;
-//        Criteria cr = session.createCriteria(Manufacturer.class);
-//        cr.add(Restrictions.eq("team", team));
-//        results = getList(cr);
-//        return results;
-//    }
-
-
-
-//    public static List<File> findFilesInFolder(Folder folder) {
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<File> results = null;
-//        Criteria cr = session.createCriteria(File.class);
-//        cr.add(Restrictions.eq("folder", folder));
-//        results = getList(cr);
-//        return results;
-//    }
-
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<T> results = null;
-//        Criteria cr = session.createCriteria(classType);
-//        cr.addOrder(Order.asc("age"));
-//        results = getList(cr);
-//        return results;
-//
-//
-//
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        Double average = null;
-//        Criteria cr = session.createCriteria(Employee.class);
-//        cr.setProjection(Projections.avg("salary"));
-//        average = (Double) getUniqueResult(cr);
-//        return average;
-
-
-
 
 }

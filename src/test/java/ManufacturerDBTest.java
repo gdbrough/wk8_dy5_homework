@@ -32,10 +32,10 @@ public class ManufacturerDBTest {
 
     @Test
     public void testCanUpdateManufacturer() {
-        manufacturer.setManufacturer(ManufacturerType.HONDA);
+        manufacturer.setManufacturerName(ManufacturerType.HONDA);
         DBHelper.saveOrUpdate(manufacturer);
         Manufacturer editedManufacturer = DBHelper.find(Manufacturer.class, manufacturer.getId());
-        assertEquals("HONDA", editedManufacturer.getManufacturer().toString().toUpperCase());
+        assertEquals("HONDA", editedManufacturer.getManufacturerName().toString().toUpperCase());
     }
 
     @Test

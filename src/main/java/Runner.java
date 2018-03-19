@@ -24,35 +24,17 @@ public class Runner {
         List<Team> teams = DBHelper.getAll(Team.class);
         for (Team team : teams){
             team.assignTeamChampionshipPoints();
-            DBHelper.saveOrUpdate(team);
+            DBHelper.update(team);
         }
         List<Team> teamChampionshipStanding = DBHelper.getTeamChampionship();
 
 
-        List<Manufacturer> allManufacturers = DBHelper.getAll(Manufacturer.class);
-        for (Manufacturer manufacturer : allManufacturers){
-            manufacturer.assignManufacturerChampionshipPoints();
-            DBHelper.saveOrUpdate(manufacturer);
-        }
-//        List<Manufacturer> manufacturerChampionshipStanding = DBHelper.getManufacturerChampionship();
-
-
-
-//        List<Team> teamsByManufacture = DBHelper.findTeamsByManufacturer(allManufacturers.get(0));
-//
-//        List<Manager> allManagers = DBHelper.getAll(Manager.class);
-//
-//        List<Rider> findRidersByManager = DBHelper.findRidersByManager(allManagers.get(0));
-//
-//        List<Rider> ridersByManager = new ArrayList<Rider>();
-//
-//        for (Manager manager : allManagers) {
-//            List<Rider> temp = DBHelper.findRidersByManager(manager);
-//            for (Rider rider : temp){
-//                ridersByManager.add(rider);
-//            }
+//        List<Manufacturer> allManufacturers = DBHelper.getAll(Manufacturer.class);
+//        for (Manufacturer manufacturer : allManufacturers){
+//            manufacturer.assignManufacturerChampionshipPoints();
+//            DBHelper.update(manufacturer);
 //        }
-
+//        List<Manufacturer> manufacturerChampionshipStanding = DBHelper.getManufacturerChampionship();
 
 
     }
