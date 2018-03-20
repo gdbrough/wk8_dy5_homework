@@ -153,11 +153,11 @@ public class DBHelper {
 
     public static List<Rider> findRidersByManager(Manager manager){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Rider> results = null;
+        List<Rider> riders = null;
         Criteria cr = session.createCriteria(Rider.class);
         cr.add(Restrictions.eq("manager", manager));
-        results = getList(cr);
-        return results;
+        riders = getList(cr);
+        return riders;
     }
 
 }
