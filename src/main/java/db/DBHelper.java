@@ -118,6 +118,7 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         List<T> results = null;
         Criteria criteria = session.createCriteria(classType);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         results = getList(criteria);
         return results;
     }
@@ -144,6 +145,7 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Manufacturer> standings = null;
         Criteria cr = session.createCriteria(Manufacturer.class);
+        cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         cr.addOrder(Order.desc("championshipPoints"));
         standings = getList(cr);
         return standings;
