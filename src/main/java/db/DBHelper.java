@@ -160,13 +160,4 @@ public class DBHelper {
         return results;
     }
 
-//    public static List<Team> findTeamsByManufacturer(Manufacturer manufacturer){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<Team> teams = null;
-//        Criteria cr = session.createCriteria(Team.class);
-//        cr.add(Restrictions.eq("manufacturer", manufacturer));
-//        teams = getList(cr);
-//        return teams;
-//    }
-
 }
