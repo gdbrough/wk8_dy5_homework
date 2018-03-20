@@ -1,11 +1,7 @@
 package models;
 
-import db.DBHelper;
 
 import javax.persistence.*;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,7 +13,6 @@ public class Manufacturer {
     private CountryType country;
     private Set<Team> teams;
     private int championshipPoints;
-//    private Manufacturer manufacturer;
 
     public Manufacturer() {
     }
@@ -75,20 +70,10 @@ public class Manufacturer {
         this.championshipPoints = championshipPoints;
     }
 
-
-
-
-
     public void assignManufacturerChampionshipPoints() {
 
-//        ManufacturerType name = ManufacturerType.values()[0];
         Set<Team> teams =  getTeams();
-//        List<Team> teams = DBHelper.findTeamsByManufacturer(manufacturer);
         for (Team team : teams){
-//            List<Rider> riders = DBHelper.findRidersByManager(team.getManager());
-//            for (Rider rider : riders){
-//                this.championshipPoints += rider.getChampionshipPoints();
-//            }
             this.championshipPoints += team.getChampionShipPoints();
         }
     }

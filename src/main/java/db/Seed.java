@@ -186,6 +186,5 @@ public class Seed {
         Rider rider24 = new Rider("Alex", "Rins", CountryType.SPAIN, 42, 0, manager12);
         DBHelper.save(rider24);
 
-
     }
 }

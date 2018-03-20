@@ -2,9 +2,7 @@ import db.DBHelper;
 import db.Seed;
 import models.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Runner {
 
@@ -29,14 +27,12 @@ public class Runner {
         }
         List<Team> teamChampionshipStanding = DBHelper.getTeamChampionship();
 
-
         List<Manufacturer> allManufacturers = DBHelper.getAll(Manufacturer.class);
         for (Manufacturer mnfctrr : allManufacturers){
             mnfctrr.assignManufacturerChampionshipPoints();
             DBHelper.update(mnfctrr);
         }
         List<Manufacturer> manufacturerChampionshipStanding = DBHelper.getManufacturerChampionship();
-
 
     }
 

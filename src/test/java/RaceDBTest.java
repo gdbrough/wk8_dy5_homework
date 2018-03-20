@@ -11,7 +11,7 @@ public class RaceDBTest {
     private Race race;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         race = new Race("British Grand Prix", "Silverstone", CountryType.UNITED_KINGDOM, "2018-08-26");
     }
 

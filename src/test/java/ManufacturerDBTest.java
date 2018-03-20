@@ -2,9 +2,7 @@ import db.DBHelper;
 import models.CountryType;
 import models.Manufacturer;
 import models.ManufacturerType;
-import models.Team;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,13 +13,13 @@ public class ManufacturerDBTest {
     private Manufacturer manufacturer;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         manufacturer = new Manufacturer(ManufacturerType.YAMAHA, CountryType.JAPAN);
         DBHelper.saveOrUpdate(manufacturer);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         DBHelper.delete(manufacturer);
     }
 

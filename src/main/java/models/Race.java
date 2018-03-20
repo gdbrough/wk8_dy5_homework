@@ -10,11 +10,6 @@ import java.util.List;
 @Table(name = "races")
 public class Race {
 
-    private Rider rider;
-    private Team team;
-    private Manager manager;
-    private Manufacturer manufacturer;
-
     private int id;
     private String name;
     private String track;
