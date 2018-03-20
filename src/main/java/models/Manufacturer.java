@@ -17,7 +17,7 @@ public class Manufacturer {
     private CountryType country;
     private Set<Team> teams;
     private int championshipPoints;
-    private Manufacturer manufacturer;
+//    private Manufacturer manufacturer;
 
     public Manufacturer() {
     }
@@ -57,7 +57,7 @@ public class Manufacturer {
         this.country = country;
     }
 
-    @OneToMany(mappedBy = "manufacturer")
+    @OneToMany(mappedBy = "manufacturer", fetch = FetchType.EAGER)
     public Set<Team> getTeams() {
         return teams;
     }
@@ -77,16 +77,20 @@ public class Manufacturer {
 
 
 
+
+
     public void assignManufacturerChampionshipPoints() {
 
 //        ManufacturerType name = ManufacturerType.values()[0];
-        List<Team> teams = DBHelper.findTeamsByManufacturer(manufacturer);
-//        for (Team team : teams){
+        Set<Team> teams =  getTeams();
+//        List<Team> teams = DBHelper.findTeamsByManufacturer(manufacturer);
+        for (Team team : teams){
 //            List<Rider> riders = DBHelper.findRidersByManager(team.getManager());
 //            for (Rider rider : riders){
 //                this.championshipPoints += rider.getChampionshipPoints();
 //            }
-//        }
+            this.championshipPoints += team.getChampionShipPoints();
+        }
     }
 
 }

@@ -12,7 +12,7 @@ public class Runner {
     private Rider rider;
     private Manager manager;
     private Team team;
-    private Manufacturer manufacturer;
+    private Manufacturer mnfctrr;
 
     public static void main(String[] args) {
 
@@ -29,12 +29,12 @@ public class Runner {
         List<Team> teamChampionshipStanding = DBHelper.getTeamChampionship();
 
 
-//        List<Manufacturer> allManufacturers = DBHelper.getAll(Manufacturer.class);
-//        for (Manufacturer manufacturer : allManufacturers){
-//            manufacturer.assignManufacturerChampionshipPoints();
-//            DBHelper.update(manufacturer);
-//        }
-//        List<Manufacturer> manufacturerChampionshipStanding = DBHelper.getManufacturerChampionship();
+        List<Manufacturer> allManufacturers = DBHelper.getAll(Manufacturer.class);
+        for (Manufacturer mnfctrr : allManufacturers){
+            mnfctrr.assignManufacturerChampionshipPoints();
+            DBHelper.update(mnfctrr);
+        }
+        List<Manufacturer> manufacturerChampionshipStanding = DBHelper.getManufacturerChampionship();
 
 
     }

@@ -76,7 +76,6 @@ public class DBHelper {
     }
 
     public static <T> List<T> getList(Criteria criteria){
-        session = HibernateUtil.getSessionFactory().openSession();
         List<T> results = null;
         try {
             transaction = session.beginTransaction();
@@ -92,7 +91,6 @@ public class DBHelper {
     }
 
     public static <T> T getUnique(Criteria criteria){
-        session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
         try {
             transaction = session.beginTransaction();
@@ -145,7 +143,7 @@ public class DBHelper {
     public static List<Manufacturer> getManufacturerChampionship() {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Manufacturer> standings = null;
-        Criteria cr = session.createCriteria(Team.class);
+        Criteria cr = session.createCriteria(Manufacturer.class);
         cr.addOrder(Order.desc("championshipPoints"));
         standings = getList(cr);
         return standings;
@@ -160,13 +158,13 @@ public class DBHelper {
         return results;
     }
 
-    public static List<Team> findTeamsByManufacturer(Manufacturer manufacturer){
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<Team> teams = null;
-        Criteria cr = session.createCriteria(Team.class);
-        cr.add(Restrictions.eq("manufacturer", manufacturer));
-        teams = getList(cr);
-        return teams;
-    }
+//    public static List<Team> findTeamsByManufacturer(Manufacturer manufacturer){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Team> teams = null;
+//        Criteria cr = session.createCriteria(Team.class);
+//        cr.add(Restrictions.eq("manufacturer", manufacturer));
+//        teams = getList(cr);
+//        return teams;
+//    }
 
 }
